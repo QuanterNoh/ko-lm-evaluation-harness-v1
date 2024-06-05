@@ -25,49 +25,53 @@ def simple_evaluate(
     decontamination_ngrams_path=None,
     write_out=False,
     output_base_path=None,
+    quantization_module=None,  # 양자화 모듈 추가
+    bit_width=None,  # 양자화 비트 추가
 ):
-    """Instantiate and evaluate a model on a list of tasks.
+    """모델을 인스턴스화하고 여러 작업에 대해 평가합니다.
 
     :param model: Union[str, LM]
-        Name of model or LM object, see lm_eval.models.get_model
+        모델 이름 또는 LM 객체, lm_eval.models.get_model 참조
     :param model_args: Optional[str]
-        String arguments for each model class, see LM.create_from_arg_string.
-        Ignored if `model` argument is a LM object.
+        각 모델 클래스에 대한 문자열 인수, LM.create_from_arg_string 참조.
+        `model` 인수가 LM 객체인 경우 무시됩니다.
     :param tasks: list[Union[str, Task]]
-        List of task names or Task objects. Task objects will be taken to have name task.EVAL_HARNESS_NAME if defined and type(task).__name__ otherwise.
+        작업 이름 또는 Task 객체의 목록. Task 객체는 정의된 경우 task.EVAL_HARNESS_NAME의 이름을,
+    그렇지 않은 경우 type(task).__name__을 가집니다.
     :param num_fewshot: int
-        Number of examples in few-shot context
+        few-shot 컨텍스트에서의 예제 수
     :param batch_size: int, optional
-        Batch size for model
+        모델의 배치 크기
     :param device: str, optional
-        PyTorch device (e.g. "cpu" or "cuda:0") for running models
+        모델 실행을 위한 PyTorch 디바이스 (예: "cpu" 또는 "cuda:0")
     :param no_cache: bool
-        Whether or not to cache
+        캐시 사용 여부
     :param limit: int or float, optional
-        Limit the number of examples per task (only use this for testing), If <1, limit is a percentage of the total number of examples.
+        작업당 예제 수를 제한합니다 (테스트용으로만 사용). <1인 경우 제한은 총 예제 수의 백분율입니다.
     :param bootstrap_iters:
-        Number of iterations for bootstrap statistics
+        부트스트랩 통계를 위한 반복 횟수
     :param description_dict: dict[str, str]
-        Dictionary of custom task descriptions of the form: `task_name: description`
+        사용자 정의 작업 설명의 딕셔너리: `task_name: description` 형식
     :param check_integrity: bool
-        Whether to run the relevant part of the test suite for the tasks
+        작업에 대한 관련 테스트를 실행할지 여부
     :param write_out: bool
-        If True, write details about prompts and logits to json for all tasks
+        True인 경우 모든 작업에 대한 프롬프트 및 로짓 정보를 json으로 작성합니다.
     :param output_base_path: str, optional
-        Directory to which detailed eval info will be written. Defaults to present working dir.
+        평가 정보를 작성할 디렉터리. 기본값은 현재 작업 디렉터리입니다.
     :return
-        Dictionary of results
+        결과 딕셔너리
     """
     random.seed(1234)
     np.random.seed(1234)
 
     assert tasks != [], "No tasks specified"
 
+    # 모델 생성 시 적용될 인자를 전달
     if isinstance(model, str):
         if model_args is None:
             model_args = ""
         lm = lm_eval.models.get_model(model).create_from_arg_string(
-            model_args, {"batch_size": batch_size, "device": device}
+            model_args, {"batch_size": batch_size, "device": device, "quantization_module": quantization_module, "bit_width": bit_width}  # 양자화 모듈 및 비트수 추가
         )
     else:
         assert isinstance(model, lm_eval.base.LM)
@@ -82,6 +86,14 @@ def simple_evaluate(
             + model_args.replace("=", "-").replace(",", "_").replace("/", "-")
             + ".db",
         )
+
+    def print_all_weights_info(model):
+        """모델의 모든 가중치에 대한 정보를 출력합니다."""
+        named_params = list(model.named_parameters())
+        
+        # 모든 가중치 타입 출력
+        for name, param in named_params:
+            print(f" - {name}: {param.dtype}")
 
     task_dict = lm_eval.tasks.get_task_dict(tasks)
 
@@ -100,6 +112,12 @@ def simple_evaluate(
         output_base_path=output_base_path,
     )
 
+    # 가중치 타입 확인
+    print()
+    print("[INFO] Model parameter types:")
+    print_all_weights_info(lm.model)
+    print()
+
     # add info about the model and few shot config
     results["config"] = {
         "model": model,
@@ -111,6 +129,8 @@ def simple_evaluate(
         "limit": limit,
         "bootstrap_iters": bootstrap_iters,
         "description_dict": description_dict,
+        "quantization_module": quantization_module,  # 양자화 설정 추가
+        "bit_width": bit_width,  # 양자화 비트 추가
     }
 
     return results

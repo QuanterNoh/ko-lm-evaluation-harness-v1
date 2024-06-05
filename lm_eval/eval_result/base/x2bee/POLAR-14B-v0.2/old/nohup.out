@@ -1,0 +1,900 @@
+mkdir -p results/all/x2bee/POLAR-14B-v0.2/
+/home/ca2023/.asdf/installs/python/miniconda3-latest/envs/quantization/lib/python3.12/site-packages/huggingface_hub/file_download.py:1132: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
+  warnings.warn(
+Selected Tasks: ['kobest_hellaswag']
+
+Loading checkpoint shards:   0%|          | 0/6 [00:00<?, ?it/s]
+Loading checkpoint shards:  17%|█▋        | 1/6 [00:01<00:06,  1.35s/it]
+Loading checkpoint shards:  33%|███▎      | 2/6 [00:02<00:05,  1.31s/it]
+Loading checkpoint shards:  50%|█████     | 3/6 [00:03<00:03,  1.28s/it]
+Loading checkpoint shards:  67%|██████▋   | 4/6 [00:05<00:02,  1.29s/it]
+Loading checkpoint shards:  83%|████████▎ | 5/6 [00:06<00:01,  1.28s/it]
+Loading checkpoint shards: 100%|██████████| 6/6 [00:07<00:00,  1.18s/it]
+Loading checkpoint shards: 100%|██████████| 6/6 [00:07<00:00,  1.24s/it]
+Task: kobest_hellaswag; number of docs: 500
+Task: kobest_hellaswag; document 0; context prompt (starting on next line):
+얼굴에 여드름이 난 여성이 거울 앞에 서있다. 여성이 거울 가까이에 얼굴을 대고 여드름을 바라본다.여성이 거울에서 물러나 면봉 두 개를 양 손으로 쥔다.
+(end of prompt on previous line)
+Requests: [Req_loglikelihood('얼굴에 여드름이 난 여성이 거울 앞에 서있다. 여성이 거울 가까이에 얼굴을 대고 여드름을 바라본다.여성이 거울에서 물러나 면봉 두 개를 양 손으로 쥔다.', ' 여성이 면봉으로 여드름 주변을 누른다.')[0]
+, Req_loglikelihood('얼굴에 여드름이 난 여성이 거울 앞에 서있다. 여성이 거울 가까이에 얼굴을 대고 여드름을 바라본다.여성이 거울에서 물러나 면봉 두 개를 양 손으로 쥔다.', ' 여성이 여드름이 터져 나오는 피를 면봉으로 닦아낸다.')[0]
+, Req_loglikelihood('얼굴에 여드름이 난 여성이 거울 앞에 서있다. 여성이 거울 가까이에 얼굴을 대고 여드름을 바라본다.여성이 거울에서 물러나 면봉 두 개를 양 손으로 쥔다.', ' 여드름이 터진다.')[0]
+, Req_loglikelihood('얼굴에 여드름이 난 여성이 거울 앞에 서있다. 여성이 거울 가까이에 얼굴을 대고 여드름을 바라본다.여성이 거울에서 물러나 면봉 두 개를 양 손으로 쥔다.', ' 면봉 두 개를 여드름 가까이에 가져간다.')[0]
+]
+Running loglikelihood requests
+
+  0%|          | 0/2000 [00:00<?, ?it/s]
+  0%|          | 8/2000 [00:02<09:40,  3.43it/s]
+  1%|          | 16/2000 [00:03<07:22,  4.48it/s]
+  1%|          | 24/2000 [00:04<06:16,  5.25it/s]
+  2%|▏         | 32/2000 [00:06<05:41,  5.76it/s]
+  2%|▏         | 40/2000 [00:07<05:12,  6.28it/s]
+  2%|▏         | 48/2000 [00:08<04:53,  6.65it/s]
+  3%|▎         | 56/2000 [00:09<04:38,  6.99it/s]
+  3%|▎         | 64/2000 [00:10<04:27,  7.24it/s]
+  4%|▎         | 72/2000 [00:11<04:13,  7.59it/s]
+  4%|▍         | 80/2000 [00:12<04:04,  7.87it/s]
+  4%|▍         | 88/2000 [00:13<03:56,  8.07it/s]
+  5%|▍         | 96/2000 [00:14<03:51,  8.24it/s]
+  5%|▌         | 104/2000 [00:14<03:45,  8.40it/s]
+  6%|▌         | 112/2000 [00:15<03:41,  8.53it/s]
+  6%|▌         | 120/2000 [00:16<03:40,  8.51it/s]
+  6%|▋         | 128/2000 [00:17<03:37,  8.62it/s]
+  7%|▋         | 136/2000 [00:18<03:31,  8.81it/s]
+  7%|▋         | 144/2000 [00:19<03:28,  8.90it/s]
+  8%|▊         | 152/2000 [00:20<03:24,  9.02it/s]
+  8%|▊         | 160/2000 [00:21<03:21,  9.13it/s]
+  8%|▊         | 168/2000 [00:22<03:22,  9.06it/s]
+  9%|▉         | 176/2000 [00:22<03:22,  9.02it/s]
+  9%|▉         | 184/2000 [00:23<03:18,  9.14it/s]
+ 10%|▉         | 192/2000 [00:24<03:14,  9.30it/s]
+ 10%|█         | 200/2000 [00:25<03:11,  9.41it/s]
+ 10%|█         | 208/2000 [00:26<03:08,  9.49it/s]
+ 11%|█         | 216/2000 [00:27<03:09,  9.40it/s]
+ 11%|█         | 224/2000 [00:27<03:08,  9.41it/s]
+ 12%|█▏        | 232/2000 [00:28<03:06,  9.50it/s]
+ 12%|█▏        | 240/2000 [00:29<03:03,  9.58it/s]
+ 12%|█▏        | 248/2000 [00:30<03:01,  9.65it/s]
+ 13%|█▎        | 256/2000 [00:31<02:59,  9.69it/s]
+ 13%|█▎        | 264/2000 [00:32<02:57,  9.78it/s]
+ 14%|█▎        | 272/2000 [00:32<02:55,  9.83it/s]
+ 14%|█▍        | 280/2000 [00:33<02:54,  9.87it/s]
+ 14%|█▍        | 288/2000 [00:34<02:51,  9.99it/s]
+ 15%|█▍        | 296/2000 [00:35<02:49, 10.05it/s]
+ 15%|█▌        | 304/2000 [00:36<02:48, 10.04it/s]
+ 16%|█▌        | 312/2000 [00:36<02:48, 10.02it/s]
+ 16%|█▌        | 320/2000 [00:37<02:45, 10.13it/s]
+ 16%|█▋        | 328/2000 [00:38<02:43, 10.20it/s]
+ 17%|█▋        | 336/2000 [00:39<02:42, 10.22it/s]
+ 17%|█▋        | 344/2000 [00:39<02:40, 10.29it/s]
+ 18%|█▊        | 352/2000 [00:40<02:41, 10.18it/s]
+ 18%|█▊        | 360/2000 [00:41<02:39, 10.27it/s]
+ 18%|█▊        | 368/2000 [00:42<02:37, 10.33it/s]
+ 19%|█▉        | 376/2000 [00:43<02:36, 10.39it/s]
+ 19%|█▉        | 384/2000 [00:43<02:34, 10.45it/s]
+ 20%|█▉        | 392/2000 [00:44<02:33, 10.48it/s]
+ 20%|██        | 400/2000 [00:45<02:32, 10.50it/s]
+ 20%|██        | 408/2000 [00:46<02:32, 10.47it/s]
+ 21%|██        | 416/2000 [00:46<02:31, 10.48it/s]
+ 21%|██        | 424/2000 [00:47<02:30, 10.49it/s]
+ 22%|██▏       | 432/2000 [00:48<02:28, 10.55it/s]
+ 22%|██▏       | 440/2000 [00:49<02:26, 10.65it/s]
+ 22%|██▏       | 448/2000 [00:49<02:24, 10.73it/s]
+ 23%|██▎       | 456/2000 [00:50<02:23, 10.79it/s]
+ 23%|██▎       | 464/2000 [00:51<02:21, 10.83it/s]
+ 24%|██▎       | 472/2000 [00:51<02:20, 10.87it/s]
+ 24%|██▍       | 480/2000 [00:52<02:19, 10.90it/s]
+ 24%|██▍       | 488/2000 [00:53<02:18, 10.93it/s]
+ 25%|██▍       | 496/2000 [00:54<02:17, 10.95it/s]
+ 25%|██▌       | 504/2000 [00:54<02:17, 10.91it/s]
+ 26%|██▌       | 512/2000 [00:55<02:17, 10.84it/s]
+ 26%|██▌       | 520/2000 [00:56<02:17, 10.80it/s]
+ 26%|██▋       | 528/2000 [00:57<02:14, 10.91it/s]
+ 27%|██▋       | 536/2000 [00:57<02:12, 11.05it/s]
+ 27%|██▋       | 544/2000 [00:58<02:10, 11.15it/s]
+ 28%|██▊       | 552/2000 [00:59<02:08, 11.23it/s]
+ 28%|██▊       | 560/2000 [00:59<02:07, 11.29it/s]
+ 28%|██▊       | 568/2000 [01:00<02:06, 11.36it/s]
+ 29%|██▉       | 576/2000 [01:01<02:03, 11.53it/s]
+ 29%|██▉       | 584/2000 [01:01<02:01, 11.65it/s]
+ 30%|██▉       | 592/2000 [01:02<01:59, 11.74it/s]
+ 30%|███       | 600/2000 [01:03<01:58, 11.82it/s]
+ 30%|███       | 608/2000 [01:03<01:57, 11.87it/s]
+ 31%|███       | 616/2000 [01:04<01:56, 11.84it/s]
+ 31%|███       | 624/2000 [01:05<01:57, 11.76it/s]
+ 32%|███▏      | 632/2000 [01:06<01:56, 11.73it/s]
+ 32%|███▏      | 640/2000 [01:06<01:55, 11.77it/s]
+ 32%|███▏      | 648/2000 [01:07<01:54, 11.85it/s]
+ 33%|███▎      | 656/2000 [01:08<01:52, 11.91it/s]
+ 33%|███▎      | 664/2000 [01:08<01:51, 11.95it/s]
+ 34%|███▎      | 672/2000 [01:09<01:50, 11.98it/s]
+ 34%|███▍      | 680/2000 [01:10<01:49, 12.00it/s]
+ 34%|███▍      | 688/2000 [01:10<01:49, 12.01it/s]
+ 35%|███▍      | 696/2000 [01:11<01:48, 12.04it/s]
+ 35%|███▌      | 704/2000 [01:11<01:47, 12.06it/s]
+ 36%|███▌      | 712/2000 [01:12<01:46, 12.08it/s]
+ 36%|███▌      | 720/2000 [01:13<01:45, 12.09it/s]
+ 36%|███▋      | 728/2000 [01:14<01:46, 11.91it/s]
+ 37%|███▋      | 736/2000 [01:14<01:45, 11.98it/s]
+ 37%|███▋      | 744/2000 [01:15<01:44, 12.03it/s]
+ 38%|███▊      | 752/2000 [01:15<01:43, 12.06it/s]
+ 38%|███▊      | 760/2000 [01:16<01:43, 11.97it/s]
+ 38%|███▊      | 768/2000 [01:17<01:44, 11.82it/s]
+ 39%|███▉      | 776/2000 [01:18<01:44, 11.77it/s]
+ 39%|███▉      | 784/2000 [01:18<01:42, 11.84it/s]
+ 40%|███▉      | 792/2000 [01:19<01:41, 11.89it/s]
+ 40%|████      | 800/2000 [01:20<01:40, 11.91it/s]
+ 40%|████      | 808/2000 [01:20<01:39, 11.95it/s]
+ 41%|████      | 816/2000 [01:21<01:38, 11.99it/s]
+ 41%|████      | 824/2000 [01:22<01:36, 12.24it/s]
+ 42%|████▏     | 832/2000 [01:22<01:34, 12.42it/s]
+ 42%|████▏     | 840/2000 [01:23<01:32, 12.58it/s]
+ 42%|████▏     | 848/2000 [01:23<01:30, 12.68it/s]
+ 43%|████▎     | 856/2000 [01:24<01:29, 12.75it/s]
+ 43%|████▎     | 864/2000 [01:25<01:28, 12.80it/s]
+ 44%|████▎     | 872/2000 [01:25<01:27, 12.85it/s]
+ 44%|████▍     | 880/2000 [01:26<01:26, 12.89it/s]
+ 44%|████▍     | 888/2000 [01:26<01:26, 12.92it/s]
+ 45%|████▍     | 896/2000 [01:27<01:25, 12.95it/s]
+ 45%|████▌     | 904/2000 [01:28<01:24, 12.97it/s]
+ 46%|████▌     | 912/2000 [01:28<01:23, 12.99it/s]
+ 46%|████▌     | 920/2000 [01:29<01:23, 13.01it/s]
+ 46%|████▋     | 928/2000 [01:30<01:22, 13.03it/s]
+ 47%|████▋     | 936/2000 [01:30<01:21, 13.03it/s]
+ 47%|████▋     | 944/2000 [01:31<01:21, 13.03it/s]
+ 48%|████▊     | 952/2000 [01:31<01:21, 12.84it/s]
+ 48%|████▊     | 960/2000 [01:32<01:21, 12.72it/s]
+ 48%|████▊     | 968/2000 [01:33<01:20, 12.82it/s]
+ 49%|████▉     | 976/2000 [01:33<01:19, 12.91it/s]
+ 49%|████▉     | 984/2000 [01:34<01:18, 12.97it/s]
+ 50%|████▉     | 992/2000 [01:34<01:17, 13.02it/s]
+ 50%|█████     | 1000/2000 [01:35<01:16, 13.06it/s]
+ 50%|█████     | 1008/2000 [01:36<01:15, 13.10it/s]
+ 51%|█████     | 1016/2000 [01:36<01:14, 13.13it/s]
+ 51%|█████     | 1024/2000 [01:37<01:14, 13.14it/s]
+ 52%|█████▏    | 1032/2000 [01:38<01:13, 13.16it/s]
+ 52%|█████▏    | 1040/2000 [01:38<01:12, 13.17it/s]
+ 52%|█████▏    | 1048/2000 [01:39<01:13, 12.98it/s]
+ 53%|█████▎    | 1056/2000 [01:39<01:13, 12.86it/s]
+ 53%|█████▎    | 1064/2000 [01:40<01:12, 12.97it/s]
+ 54%|█████▎    | 1072/2000 [01:41<01:11, 13.05it/s]
+ 54%|█████▍    | 1080/2000 [01:41<01:10, 13.11it/s]
+ 54%|█████▍    | 1088/2000 [01:42<01:09, 13.15it/s]
+ 55%|█████▍    | 1096/2000 [01:42<01:08, 13.19it/s]
+ 55%|█████▌    | 1104/2000 [01:43<01:07, 13.23it/s]
+ 56%|█████▌    | 1112/2000 [01:44<01:08, 13.05it/s]
+ 56%|█████▌    | 1120/2000 [01:44<01:07, 13.02it/s]
+ 56%|█████▋    | 1128/2000 [01:45<01:06, 13.20it/s]
+ 57%|█████▋    | 1136/2000 [01:45<01:04, 13.34it/s]
+ 57%|█████▋    | 1144/2000 [01:46<01:03, 13.45it/s]
+ 58%|█████▊    | 1152/2000 [01:47<01:02, 13.53it/s]
+ 58%|█████▊    | 1160/2000 [01:47<01:01, 13.57it/s]
+ 58%|█████▊    | 1168/2000 [01:48<01:01, 13.59it/s]
+ 59%|█████▉    | 1176/2000 [01:48<01:00, 13.63it/s]
+ 59%|█████▉    | 1184/2000 [01:49<00:59, 13.65it/s]
+ 60%|█████▉    | 1192/2000 [01:50<00:59, 13.66it/s]
+ 60%|██████    | 1200/2000 [01:50<00:58, 13.68it/s]
+ 60%|██████    | 1208/2000 [01:51<00:57, 13.69it/s]
+ 61%|██████    | 1216/2000 [01:51<00:57, 13.70it/s]
+ 61%|██████    | 1224/2000 [01:52<00:56, 13.73it/s]
+ 62%|██████▏   | 1232/2000 [01:52<00:55, 13.74it/s]
+ 62%|██████▏   | 1240/2000 [01:53<00:55, 13.75it/s]
+ 62%|██████▏   | 1248/2000 [01:54<00:54, 13.76it/s]
+ 63%|██████▎   | 1256/2000 [01:54<00:54, 13.57it/s]
+ 63%|██████▎   | 1264/2000 [01:55<00:54, 13.42it/s]
+ 64%|██████▎   | 1272/2000 [01:55<00:54, 13.33it/s]
+ 64%|██████▍   | 1280/2000 [01:56<00:53, 13.47it/s]
+ 64%|██████▍   | 1288/2000 [01:57<00:52, 13.57it/s]
+ 65%|██████▍   | 1296/2000 [01:57<00:52, 13.45it/s]
+ 65%|██████▌   | 1304/2000 [01:58<00:51, 13.56it/s]
+ 66%|██████▌   | 1312/2000 [01:58<00:50, 13.66it/s]
+ 66%|██████▌   | 1320/2000 [01:59<00:49, 13.69it/s]
+ 66%|██████▋   | 1328/2000 [01:59<00:48, 13.74it/s]
+ 67%|██████▋   | 1336/2000 [02:00<00:48, 13.78it/s]
+ 67%|██████▋   | 1344/2000 [02:01<00:47, 13.80it/s]
+ 68%|██████▊   | 1352/2000 [02:01<00:46, 13.84it/s]
+ 68%|██████▊   | 1360/2000 [02:02<00:46, 13.84it/s]
+ 68%|██████▊   | 1368/2000 [02:02<00:45, 13.86it/s]
+ 69%|██████▉   | 1376/2000 [02:03<00:44, 13.87it/s]
+ 69%|██████▉   | 1384/2000 [02:04<00:44, 13.91it/s]
+ 70%|██████▉   | 1392/2000 [02:04<00:43, 13.94it/s]
+ 70%|███████   | 1400/2000 [02:05<00:42, 13.95it/s]
+ 70%|███████   | 1408/2000 [02:05<00:42, 13.97it/s]
+ 71%|███████   | 1416/2000 [02:06<00:41, 13.98it/s]
+ 71%|███████   | 1424/2000 [02:06<00:41, 13.98it/s]
+ 72%|███████▏  | 1432/2000 [02:07<00:40, 14.00it/s]
+ 72%|███████▏  | 1440/2000 [02:08<00:39, 14.01it/s]
+ 72%|███████▏  | 1448/2000 [02:08<00:39, 13.93it/s]
+ 73%|███████▎  | 1456/2000 [02:09<00:38, 13.96it/s]
+ 73%|███████▎  | 1464/2000 [02:09<00:38, 13.99it/s]
+ 74%|███████▎  | 1472/2000 [02:10<00:37, 14.02it/s]
+ 74%|███████▍  | 1480/2000 [02:10<00:37, 14.04it/s]
+ 74%|███████▍  | 1488/2000 [02:11<00:36, 14.10it/s]
+ 75%|███████▍  | 1496/2000 [02:12<00:35, 14.14it/s]
+ 75%|███████▌  | 1504/2000 [02:12<00:35, 14.17it/s]
+ 76%|███████▌  | 1512/2000 [02:13<00:33, 14.71it/s]
+ 76%|███████▌  | 1520/2000 [02:13<00:31, 15.13it/s]
+ 76%|███████▋  | 1528/2000 [02:14<00:31, 15.21it/s]
+ 77%|███████▋  | 1536/2000 [02:14<00:29, 15.48it/s]
+ 77%|███████▋  | 1544/2000 [02:15<00:29, 15.57it/s]
+ 78%|███████▊  | 1552/2000 [02:15<00:28, 15.53it/s]
+ 78%|███████▊  | 1560/2000 [02:16<00:27, 15.74it/s]
+ 78%|███████▊  | 1568/2000 [02:16<00:27, 15.91it/s]
+ 79%|███████▉  | 1576/2000 [02:17<00:26, 16.13it/s]
+ 79%|███████▉  | 1584/2000 [02:17<00:25, 16.20it/s]
+ 80%|███████▉  | 1592/2000 [02:18<00:25, 16.00it/s]
+ 80%|████████  | 1600/2000 [02:18<00:24, 16.08it/s]
+ 80%|████████  | 1608/2000 [02:19<00:24, 16.17it/s]
+ 81%|████████  | 1616/2000 [02:19<00:23, 16.24it/s]
+ 81%|████████  | 1624/2000 [02:20<00:23, 16.30it/s]
+ 82%|████████▏ | 1632/2000 [02:20<00:22, 16.33it/s]
+ 82%|████████▏ | 1640/2000 [02:20<00:22, 16.34it/s]
+ 82%|████████▏ | 1648/2000 [02:21<00:21, 16.35it/s]
+ 83%|████████▎ | 1656/2000 [02:21<00:21, 16.37it/s]
+ 83%|████████▎ | 1664/2000 [02:22<00:20, 16.27it/s]
+ 84%|████████▎ | 1672/2000 [02:22<00:20, 16.32it/s]
+ 84%|████████▍ | 1680/2000 [02:23<00:19, 16.37it/s]
+ 84%|████████▍ | 1688/2000 [02:23<00:19, 16.42it/s]
+ 85%|████████▍ | 1696/2000 [02:24<00:18, 16.43it/s]
+ 85%|████████▌ | 1704/2000 [02:24<00:17, 16.47it/s]
+ 86%|████████▌ | 1712/2000 [02:25<00:17, 16.49it/s]
+ 86%|████████▌ | 1720/2000 [02:25<00:16, 16.50it/s]
+ 86%|████████▋ | 1728/2000 [02:26<00:16, 16.51it/s]
+ 87%|████████▋ | 1736/2000 [02:26<00:16, 16.27it/s]
+ 87%|████████▋ | 1744/2000 [02:27<00:15, 16.26it/s]
+ 88%|████████▊ | 1752/2000 [02:27<00:15, 16.37it/s]
+ 88%|████████▊ | 1760/2000 [02:28<00:14, 16.44it/s]
+ 88%|████████▊ | 1768/2000 [02:28<00:14, 16.53it/s]
+ 89%|████████▉ | 1776/2000 [02:29<00:13, 16.58it/s]
+ 89%|████████▉ | 1784/2000 [02:29<00:13, 16.61it/s]
+ 90%|████████▉ | 1792/2000 [02:30<00:12, 16.64it/s]
+ 90%|█████████ | 1800/2000 [02:30<00:11, 16.70it/s]
+ 90%|█████████ | 1808/2000 [02:31<00:11, 16.71it/s]
+ 91%|█████████ | 1816/2000 [02:31<00:10, 16.75it/s]
+ 91%|█████████ | 1824/2000 [02:32<00:10, 16.76it/s]
+ 92%|█████████▏| 1832/2000 [02:32<00:10, 16.79it/s]
+ 92%|█████████▏| 1840/2000 [02:33<00:09, 16.81it/s]
+ 92%|█████████▏| 1848/2000 [02:33<00:08, 17.00it/s]
+ 93%|█████████▎| 1856/2000 [02:33<00:08, 17.15it/s]
+ 93%|█████████▎| 1864/2000 [02:34<00:07, 17.27it/s]
+ 94%|█████████▎| 1872/2000 [02:34<00:07, 17.38it/s]
+ 94%|█████████▍| 1880/2000 [02:35<00:06, 17.44it/s]
+ 94%|█████████▍| 1888/2000 [02:35<00:06, 17.50it/s]
+ 95%|█████████▍| 1896/2000 [02:36<00:05, 17.56it/s]
+ 95%|█████████▌| 1904/2000 [02:36<00:05, 17.60it/s]
+ 96%|█████████▌| 1912/2000 [02:37<00:05, 17.60it/s]
+ 96%|█████████▌| 1920/2000 [02:37<00:04, 17.65it/s]
+ 96%|█████████▋| 1928/2000 [02:38<00:04, 17.69it/s]
+ 97%|█████████▋| 1936/2000 [02:38<00:03, 17.74it/s]
+ 97%|█████████▋| 1944/2000 [02:38<00:03, 17.69it/s]
+ 98%|█████████▊| 1952/2000 [02:39<00:02, 17.66it/s]
+ 98%|█████████▊| 1960/2000 [02:39<00:02, 17.68it/s]
+ 98%|█████████▊| 1968/2000 [02:40<00:01, 17.69it/s]
+ 99%|█████████▉| 1976/2000 [02:40<00:01, 17.71it/s]
+ 99%|█████████▉| 1984/2000 [02:41<00:00, 17.80it/s]
+100%|█████████▉| 1992/2000 [02:41<00:00, 18.16it/s]
+100%|██████████| 2000/2000 [02:42<00:00, 18.49it/s]
+100%|██████████| 2000/2000 [02:42<00:00, 12.34it/s]
+bootstrapping for stddev: macro_f1_score
+
+  0%|          | 0/100 [00:00<?, ?it/s]
+  1%|          | 1/100 [00:03<05:39,  3.43s/it]
+ 39%|███▉      | 39/100 [00:03<00:04, 14.90it/s]
+ 81%|████████  | 81/100 [00:04<00:00, 23.39it/s]
+ 89%|████████▉ | 89/100 [00:05<00:00, 20.84it/s]
+100%|██████████| 100/100 [00:05<00:00, 18.52it/s]
+
+[INFO] Model parameter types:
+ - model.embed_tokens.weight: torch.float16
+ - model.layers.0.self_attn.q_proj.weight: torch.float16
+ - model.layers.0.self_attn.k_proj.weight: torch.float16
+ - model.layers.0.self_attn.v_proj.weight: torch.float16
+ - model.layers.0.self_attn.o_proj.weight: torch.float16
+ - model.layers.0.mlp.gate_proj.weight: torch.float16
+ - model.layers.0.mlp.up_proj.weight: torch.float16
+ - model.layers.0.mlp.down_proj.weight: torch.float16
+ - model.layers.0.input_layernorm.weight: torch.float16
+ - model.layers.0.post_attention_layernorm.weight: torch.float16
+ - model.layers.1.self_attn.q_proj.weight: torch.float16
+ - model.layers.1.self_attn.k_proj.weight: torch.float16
+ - model.layers.1.self_attn.v_proj.weight: torch.float16
+ - model.layers.1.self_attn.o_proj.weight: torch.float16
+ - model.layers.1.mlp.gate_proj.weight: torch.float16
+ - model.layers.1.mlp.up_proj.weight: torch.float16
+ - model.layers.1.mlp.down_proj.weight: torch.float16
+ - model.layers.1.input_layernorm.weight: torch.float16
+ - model.layers.1.post_attention_layernorm.weight: torch.float16
+ - model.layers.2.self_attn.q_proj.weight: torch.float16
+ - model.layers.2.self_attn.k_proj.weight: torch.float16
+ - model.layers.2.self_attn.v_proj.weight: torch.float16
+ - model.layers.2.self_attn.o_proj.weight: torch.float16
+ - model.layers.2.mlp.gate_proj.weight: torch.float16
+ - model.layers.2.mlp.up_proj.weight: torch.float16
+ - model.layers.2.mlp.down_proj.weight: torch.float16
+ - model.layers.2.input_layernorm.weight: torch.float16
+ - model.layers.2.post_attention_layernorm.weight: torch.float16
+ - model.layers.3.self_attn.q_proj.weight: torch.float16
+ - model.layers.3.self_attn.k_proj.weight: torch.float16
+ - model.layers.3.self_attn.v_proj.weight: torch.float16
+ - model.layers.3.self_attn.o_proj.weight: torch.float16
+ - model.layers.3.mlp.gate_proj.weight: torch.float16
+ - model.layers.3.mlp.up_proj.weight: torch.float16
+ - model.layers.3.mlp.down_proj.weight: torch.float16
+ - model.layers.3.input_layernorm.weight: torch.float16
+ - model.layers.3.post_attention_layernorm.weight: torch.float16
+ - model.layers.4.self_attn.q_proj.weight: torch.float16
+ - model.layers.4.self_attn.k_proj.weight: torch.float16
+ - model.layers.4.self_attn.v_proj.weight: torch.float16
+ - model.layers.4.self_attn.o_proj.weight: torch.float16
+ - model.layers.4.mlp.gate_proj.weight: torch.float16
+ - model.layers.4.mlp.up_proj.weight: torch.float16
+ - model.layers.4.mlp.down_proj.weight: torch.float16
+ - model.layers.4.input_layernorm.weight: torch.float16
+ - model.layers.4.post_attention_layernorm.weight: torch.float16
+ - model.layers.5.self_attn.q_proj.weight: torch.float16
+ - model.layers.5.self_attn.k_proj.weight: torch.float16
+ - model.layers.5.self_attn.v_proj.weight: torch.float16
+ - model.layers.5.self_attn.o_proj.weight: torch.float16
+ - model.layers.5.mlp.gate_proj.weight: torch.float16
+ - model.layers.5.mlp.up_proj.weight: torch.float16
+ - model.layers.5.mlp.down_proj.weight: torch.float16
+ - model.layers.5.input_layernorm.weight: torch.float16
+ - model.layers.5.post_attention_layernorm.weight: torch.float16
+ - model.layers.6.self_attn.q_proj.weight: torch.float16
+ - model.layers.6.self_attn.k_proj.weight: torch.float16
+ - model.layers.6.self_attn.v_proj.weight: torch.float16
+ - model.layers.6.self_attn.o_proj.weight: torch.float16
+ - model.layers.6.mlp.gate_proj.weight: torch.float16
+ - model.layers.6.mlp.up_proj.weight: torch.float16
+ - model.layers.6.mlp.down_proj.weight: torch.float16
+ - model.layers.6.input_layernorm.weight: torch.float16
+ - model.layers.6.post_attention_layernorm.weight: torch.float16
+ - model.layers.7.self_attn.q_proj.weight: torch.float16
+ - model.layers.7.self_attn.k_proj.weight: torch.float16
+ - model.layers.7.self_attn.v_proj.weight: torch.float16
+ - model.layers.7.self_attn.o_proj.weight: torch.float16
+ - model.layers.7.mlp.gate_proj.weight: torch.float16
+ - model.layers.7.mlp.up_proj.weight: torch.float16
+ - model.layers.7.mlp.down_proj.weight: torch.float16
+ - model.layers.7.input_layernorm.weight: torch.float16
+ - model.layers.7.post_attention_layernorm.weight: torch.float16
+ - model.layers.8.self_attn.q_proj.weight: torch.float16
+ - model.layers.8.self_attn.k_proj.weight: torch.float16
+ - model.layers.8.self_attn.v_proj.weight: torch.float16
+ - model.layers.8.self_attn.o_proj.weight: torch.float16
+ - model.layers.8.mlp.gate_proj.weight: torch.float16
+ - model.layers.8.mlp.up_proj.weight: torch.float16
+ - model.layers.8.mlp.down_proj.weight: torch.float16
+ - model.layers.8.input_layernorm.weight: torch.float16
+ - model.layers.8.post_attention_layernorm.weight: torch.float16
+ - model.layers.9.self_attn.q_proj.weight: torch.float16
+ - model.layers.9.self_attn.k_proj.weight: torch.float16
+ - model.layers.9.self_attn.v_proj.weight: torch.float16
+ - model.layers.9.self_attn.o_proj.weight: torch.float16
+ - model.layers.9.mlp.gate_proj.weight: torch.float16
+ - model.layers.9.mlp.up_proj.weight: torch.float16
+ - model.layers.9.mlp.down_proj.weight: torch.float16
+ - model.layers.9.input_layernorm.weight: torch.float16
+ - model.layers.9.post_attention_layernorm.weight: torch.float16
+ - model.layers.10.self_attn.q_proj.weight: torch.float16
+ - model.layers.10.self_attn.k_proj.weight: torch.float16
+ - model.layers.10.self_attn.v_proj.weight: torch.float16
+ - model.layers.10.self_attn.o_proj.weight: torch.float16
+ - model.layers.10.mlp.gate_proj.weight: torch.float16
+ - model.layers.10.mlp.up_proj.weight: torch.float16
+ - model.layers.10.mlp.down_proj.weight: torch.float16
+ - model.layers.10.input_layernorm.weight: torch.float16
+ - model.layers.10.post_attention_layernorm.weight: torch.float16
+ - model.layers.11.self_attn.q_proj.weight: torch.float16
+ - model.layers.11.self_attn.k_proj.weight: torch.float16
+ - model.layers.11.self_attn.v_proj.weight: torch.float16
+ - model.layers.11.self_attn.o_proj.weight: torch.float16
+ - model.layers.11.mlp.gate_proj.weight: torch.float16
+ - model.layers.11.mlp.up_proj.weight: torch.float16
+ - model.layers.11.mlp.down_proj.weight: torch.float16
+ - model.layers.11.input_layernorm.weight: torch.float16
+ - model.layers.11.post_attention_layernorm.weight: torch.float16
+ - model.layers.12.self_attn.q_proj.weight: torch.float16
+ - model.layers.12.self_attn.k_proj.weight: torch.float16
+ - model.layers.12.self_attn.v_proj.weight: torch.float16
+ - model.layers.12.self_attn.o_proj.weight: torch.float16
+ - model.layers.12.mlp.gate_proj.weight: torch.float16
+ - model.layers.12.mlp.up_proj.weight: torch.float16
+ - model.layers.12.mlp.down_proj.weight: torch.float16
+ - model.layers.12.input_layernorm.weight: torch.float16
+ - model.layers.12.post_attention_layernorm.weight: torch.float16
+ - model.layers.13.self_attn.q_proj.weight: torch.float16
+ - model.layers.13.self_attn.k_proj.weight: torch.float16
+ - model.layers.13.self_attn.v_proj.weight: torch.float16
+ - model.layers.13.self_attn.o_proj.weight: torch.float16
+ - model.layers.13.mlp.gate_proj.weight: torch.float16
+ - model.layers.13.mlp.up_proj.weight: torch.float16
+ - model.layers.13.mlp.down_proj.weight: torch.float16
+ - model.layers.13.input_layernorm.weight: torch.float16
+ - model.layers.13.post_attention_layernorm.weight: torch.float16
+ - model.layers.14.self_attn.q_proj.weight: torch.float16
+ - model.layers.14.self_attn.k_proj.weight: torch.float16
+ - model.layers.14.self_attn.v_proj.weight: torch.float16
+ - model.layers.14.self_attn.o_proj.weight: torch.float16
+ - model.layers.14.mlp.gate_proj.weight: torch.float16
+ - model.layers.14.mlp.up_proj.weight: torch.float16
+ - model.layers.14.mlp.down_proj.weight: torch.float16
+ - model.layers.14.input_layernorm.weight: torch.float16
+ - model.layers.14.post_attention_layernorm.weight: torch.float16
+ - model.layers.15.self_attn.q_proj.weight: torch.float16
+ - model.layers.15.self_attn.k_proj.weight: torch.float16
+ - model.layers.15.self_attn.v_proj.weight: torch.float16
+ - model.layers.15.self_attn.o_proj.weight: torch.float16
+ - model.layers.15.mlp.gate_proj.weight: torch.float16
+ - model.layers.15.mlp.up_proj.weight: torch.float16
+ - model.layers.15.mlp.down_proj.weight: torch.float16
+ - model.layers.15.input_layernorm.weight: torch.float16
+ - model.layers.15.post_attention_layernorm.weight: torch.float16
+ - model.layers.16.self_attn.q_proj.weight: torch.float16
+ - model.layers.16.self_attn.k_proj.weight: torch.float16
+ - model.layers.16.self_attn.v_proj.weight: torch.float16
+ - model.layers.16.self_attn.o_proj.weight: torch.float16
+ - model.layers.16.mlp.gate_proj.weight: torch.float16
+ - model.layers.16.mlp.up_proj.weight: torch.float16
+ - model.layers.16.mlp.down_proj.weight: torch.float16
+ - model.layers.16.input_layernorm.weight: torch.float16
+ - model.layers.16.post_attention_layernorm.weight: torch.float16
+ - model.layers.17.self_attn.q_proj.weight: torch.float16
+ - model.layers.17.self_attn.k_proj.weight: torch.float16
+ - model.layers.17.self_attn.v_proj.weight: torch.float16
+ - model.layers.17.self_attn.o_proj.weight: torch.float16
+ - model.layers.17.mlp.gate_proj.weight: torch.float16
+ - model.layers.17.mlp.up_proj.weight: torch.float16
+ - model.layers.17.mlp.down_proj.weight: torch.float16
+ - model.layers.17.input_layernorm.weight: torch.float16
+ - model.layers.17.post_attention_layernorm.weight: torch.float16
+ - model.layers.18.self_attn.q_proj.weight: torch.float16
+ - model.layers.18.self_attn.k_proj.weight: torch.float16
+ - model.layers.18.self_attn.v_proj.weight: torch.float16
+ - model.layers.18.self_attn.o_proj.weight: torch.float16
+ - model.layers.18.mlp.gate_proj.weight: torch.float16
+ - model.layers.18.mlp.up_proj.weight: torch.float16
+ - model.layers.18.mlp.down_proj.weight: torch.float16
+ - model.layers.18.input_layernorm.weight: torch.float16
+ - model.layers.18.post_attention_layernorm.weight: torch.float16
+ - model.layers.19.self_attn.q_proj.weight: torch.float16
+ - model.layers.19.self_attn.k_proj.weight: torch.float16
+ - model.layers.19.self_attn.v_proj.weight: torch.float16
+ - model.layers.19.self_attn.o_proj.weight: torch.float16
+ - model.layers.19.mlp.gate_proj.weight: torch.float16
+ - model.layers.19.mlp.up_proj.weight: torch.float16
+ - model.layers.19.mlp.down_proj.weight: torch.float16
+ - model.layers.19.input_layernorm.weight: torch.float16
+ - model.layers.19.post_attention_layernorm.weight: torch.float16
+ - model.layers.20.self_attn.q_proj.weight: torch.float16
+ - model.layers.20.self_attn.k_proj.weight: torch.float16
+ - model.layers.20.self_attn.v_proj.weight: torch.float16
+ - model.layers.20.self_attn.o_proj.weight: torch.float16
+ - model.layers.20.mlp.gate_proj.weight: torch.float16
+ - model.layers.20.mlp.up_proj.weight: torch.float16
+ - model.layers.20.mlp.down_proj.weight: torch.float16
+ - model.layers.20.input_layernorm.weight: torch.float16
+ - model.layers.20.post_attention_layernorm.weight: torch.float16
+ - model.layers.21.self_attn.q_proj.weight: torch.float16
+ - model.layers.21.self_attn.k_proj.weight: torch.float16
+ - model.layers.21.self_attn.v_proj.weight: torch.float16
+ - model.layers.21.self_attn.o_proj.weight: torch.float16
+ - model.layers.21.mlp.gate_proj.weight: torch.float16
+ - model.layers.21.mlp.up_proj.weight: torch.float16
+ - model.layers.21.mlp.down_proj.weight: torch.float16
+ - model.layers.21.input_layernorm.weight: torch.float16
+ - model.layers.21.post_attention_layernorm.weight: torch.float16
+ - model.layers.22.self_attn.q_proj.weight: torch.float16
+ - model.layers.22.self_attn.k_proj.weight: torch.float16
+ - model.layers.22.self_attn.v_proj.weight: torch.float16
+ - model.layers.22.self_attn.o_proj.weight: torch.float16
+ - model.layers.22.mlp.gate_proj.weight: torch.float16
+ - model.layers.22.mlp.up_proj.weight: torch.float16
+ - model.layers.22.mlp.down_proj.weight: torch.float16
+ - model.layers.22.input_layernorm.weight: torch.float16
+ - model.layers.22.post_attention_layernorm.weight: torch.float16
+ - model.layers.23.self_attn.q_proj.weight: torch.float16
+ - model.layers.23.self_attn.k_proj.weight: torch.float16
+ - model.layers.23.self_attn.v_proj.weight: torch.float16
+ - model.layers.23.self_attn.o_proj.weight: torch.float16
+ - model.layers.23.mlp.gate_proj.weight: torch.float16
+ - model.layers.23.mlp.up_proj.weight: torch.float16
+ - model.layers.23.mlp.down_proj.weight: torch.float16
+ - model.layers.23.input_layernorm.weight: torch.float16
+ - model.layers.23.post_attention_layernorm.weight: torch.float16
+ - model.layers.24.self_attn.q_proj.weight: torch.float16
+ - model.layers.24.self_attn.k_proj.weight: torch.float16
+ - model.layers.24.self_attn.v_proj.weight: torch.float16
+ - model.layers.24.self_attn.o_proj.weight: torch.float16
+ - model.layers.24.mlp.gate_proj.weight: torch.float16
+ - model.layers.24.mlp.up_proj.weight: torch.float16
+ - model.layers.24.mlp.down_proj.weight: torch.float16
+ - model.layers.24.input_layernorm.weight: torch.float16
+ - model.layers.24.post_attention_layernorm.weight: torch.float16
+ - model.layers.25.self_attn.q_proj.weight: torch.float16
+ - model.layers.25.self_attn.k_proj.weight: torch.float16
+ - model.layers.25.self_attn.v_proj.weight: torch.float16
+ - model.layers.25.self_attn.o_proj.weight: torch.float16
+ - model.layers.25.mlp.gate_proj.weight: torch.float16
+ - model.layers.25.mlp.up_proj.weight: torch.float16
+ - model.layers.25.mlp.down_proj.weight: torch.float16
+ - model.layers.25.input_layernorm.weight: torch.float16
+ - model.layers.25.post_attention_layernorm.weight: torch.float16
+ - model.layers.26.self_attn.q_proj.weight: torch.float16
+ - model.layers.26.self_attn.k_proj.weight: torch.float16
+ - model.layers.26.self_attn.v_proj.weight: torch.float16
+ - model.layers.26.self_attn.o_proj.weight: torch.float16
+ - model.layers.26.mlp.gate_proj.weight: torch.float16
+ - model.layers.26.mlp.up_proj.weight: torch.float16
+ - model.layers.26.mlp.down_proj.weight: torch.float16
+ - model.layers.26.input_layernorm.weight: torch.float16
+ - model.layers.26.post_attention_layernorm.weight: torch.float16
+ - model.layers.27.self_attn.q_proj.weight: torch.float16
+ - model.layers.27.self_attn.k_proj.weight: torch.float16
+ - model.layers.27.self_attn.v_proj.weight: torch.float16
+ - model.layers.27.self_attn.o_proj.weight: torch.float16
+ - model.layers.27.mlp.gate_proj.weight: torch.float16
+ - model.layers.27.mlp.up_proj.weight: torch.float16
+ - model.layers.27.mlp.down_proj.weight: torch.float16
+ - model.layers.27.input_layernorm.weight: torch.float16
+ - model.layers.27.post_attention_layernorm.weight: torch.float16
+ - model.layers.28.self_attn.q_proj.weight: torch.float16
+ - model.layers.28.self_attn.k_proj.weight: torch.float16
+ - model.layers.28.self_attn.v_proj.weight: torch.float16
+ - model.layers.28.self_attn.o_proj.weight: torch.float16
+ - model.layers.28.mlp.gate_proj.weight: torch.float16
+ - model.layers.28.mlp.up_proj.weight: torch.float16
+ - model.layers.28.mlp.down_proj.weight: torch.float16
+ - model.layers.28.input_layernorm.weight: torch.float16
+ - model.layers.28.post_attention_layernorm.weight: torch.float16
+ - model.layers.29.self_attn.q_proj.weight: torch.float16
+ - model.layers.29.self_attn.k_proj.weight: torch.float16
+ - model.layers.29.self_attn.v_proj.weight: torch.float16
+ - model.layers.29.self_attn.o_proj.weight: torch.float16
+ - model.layers.29.mlp.gate_proj.weight: torch.float16
+ - model.layers.29.mlp.up_proj.weight: torch.float16
+ - model.layers.29.mlp.down_proj.weight: torch.float16
+ - model.layers.29.input_layernorm.weight: torch.float16
+ - model.layers.29.post_attention_layernorm.weight: torch.float16
+ - model.layers.30.self_attn.q_proj.weight: torch.float16
+ - model.layers.30.self_attn.k_proj.weight: torch.float16
+ - model.layers.30.self_attn.v_proj.weight: torch.float16
+ - model.layers.30.self_attn.o_proj.weight: torch.float16
+ - model.layers.30.mlp.gate_proj.weight: torch.float16
+ - model.layers.30.mlp.up_proj.weight: torch.float16
+ - model.layers.30.mlp.down_proj.weight: torch.float16
+ - model.layers.30.input_layernorm.weight: torch.float16
+ - model.layers.30.post_attention_layernorm.weight: torch.float16
+ - model.layers.31.self_attn.q_proj.weight: torch.float16
+ - model.layers.31.self_attn.k_proj.weight: torch.float16
+ - model.layers.31.self_attn.v_proj.weight: torch.float16
+ - model.layers.31.self_attn.o_proj.weight: torch.float16
+ - model.layers.31.mlp.gate_proj.weight: torch.float16
+ - model.layers.31.mlp.up_proj.weight: torch.float16
+ - model.layers.31.mlp.down_proj.weight: torch.float16
+ - model.layers.31.input_layernorm.weight: torch.float16
+ - model.layers.31.post_attention_layernorm.weight: torch.float16
+ - model.layers.32.self_attn.q_proj.weight: torch.float16
+ - model.layers.32.self_attn.k_proj.weight: torch.float16
+ - model.layers.32.self_attn.v_proj.weight: torch.float16
+ - model.layers.32.self_attn.o_proj.weight: torch.float16
+ - model.layers.32.mlp.gate_proj.weight: torch.float16
+ - model.layers.32.mlp.up_proj.weight: torch.float16
+ - model.layers.32.mlp.down_proj.weight: torch.float16
+ - model.layers.32.input_layernorm.weight: torch.float16
+ - model.layers.32.post_attention_layernorm.weight: torch.float16
+ - model.layers.33.self_attn.q_proj.weight: torch.float16
+ - model.layers.33.self_attn.k_proj.weight: torch.float16
+ - model.layers.33.self_attn.v_proj.weight: torch.float16
+ - model.layers.33.self_attn.o_proj.weight: torch.float16
+ - model.layers.33.mlp.gate_proj.weight: torch.float16
+ - model.layers.33.mlp.up_proj.weight: torch.float16
+ - model.layers.33.mlp.down_proj.weight: torch.float16
+ - model.layers.33.input_layernorm.weight: torch.float16
+ - model.layers.33.post_attention_layernorm.weight: torch.float16
+ - model.layers.34.self_attn.q_proj.weight: torch.float16
+ - model.layers.34.self_attn.k_proj.weight: torch.float16
+ - model.layers.34.self_attn.v_proj.weight: torch.float16
+ - model.layers.34.self_attn.o_proj.weight: torch.float16
+ - model.layers.34.mlp.gate_proj.weight: torch.float16
+ - model.layers.34.mlp.up_proj.weight: torch.float16
+ - model.layers.34.mlp.down_proj.weight: torch.float16
+ - model.layers.34.input_layernorm.weight: torch.float16
+ - model.layers.34.post_attention_layernorm.weight: torch.float16
+ - model.layers.35.self_attn.q_proj.weight: torch.float16
+ - model.layers.35.self_attn.k_proj.weight: torch.float16
+ - model.layers.35.self_attn.v_proj.weight: torch.float16
+ - model.layers.35.self_attn.o_proj.weight: torch.float16
+ - model.layers.35.mlp.gate_proj.weight: torch.float16
+ - model.layers.35.mlp.up_proj.weight: torch.float16
+ - model.layers.35.mlp.down_proj.weight: torch.float16
+ - model.layers.35.input_layernorm.weight: torch.float16
+ - model.layers.35.post_attention_layernorm.weight: torch.float16
+ - model.layers.36.self_attn.q_proj.weight: torch.float16
+ - model.layers.36.self_attn.k_proj.weight: torch.float16
+ - model.layers.36.self_attn.v_proj.weight: torch.float16
+ - model.layers.36.self_attn.o_proj.weight: torch.float16
+ - model.layers.36.mlp.gate_proj.weight: torch.float16
+ - model.layers.36.mlp.up_proj.weight: torch.float16
+ - model.layers.36.mlp.down_proj.weight: torch.float16
+ - model.layers.36.input_layernorm.weight: torch.float16
+ - model.layers.36.post_attention_layernorm.weight: torch.float16
+ - model.layers.37.self_attn.q_proj.weight: torch.float16
+ - model.layers.37.self_attn.k_proj.weight: torch.float16
+ - model.layers.37.self_attn.v_proj.weight: torch.float16
+ - model.layers.37.self_attn.o_proj.weight: torch.float16
+ - model.layers.37.mlp.gate_proj.weight: torch.float16
+ - model.layers.37.mlp.up_proj.weight: torch.float16
+ - model.layers.37.mlp.down_proj.weight: torch.float16
+ - model.layers.37.input_layernorm.weight: torch.float16
+ - model.layers.37.post_attention_layernorm.weight: torch.float16
+ - model.layers.38.self_attn.q_proj.weight: torch.float16
+ - model.layers.38.self_attn.k_proj.weight: torch.float16
+ - model.layers.38.self_attn.v_proj.weight: torch.float16
+ - model.layers.38.self_attn.o_proj.weight: torch.float16
+ - model.layers.38.mlp.gate_proj.weight: torch.float16
+ - model.layers.38.mlp.up_proj.weight: torch.float16
+ - model.layers.38.mlp.down_proj.weight: torch.float16
+ - model.layers.38.input_layernorm.weight: torch.float16
+ - model.layers.38.post_attention_layernorm.weight: torch.float16
+ - model.layers.39.self_attn.q_proj.weight: torch.float16
+ - model.layers.39.self_attn.k_proj.weight: torch.float16
+ - model.layers.39.self_attn.v_proj.weight: torch.float16
+ - model.layers.39.self_attn.o_proj.weight: torch.float16
+ - model.layers.39.mlp.gate_proj.weight: torch.float16
+ - model.layers.39.mlp.up_proj.weight: torch.float16
+ - model.layers.39.mlp.down_proj.weight: torch.float16
+ - model.layers.39.input_layernorm.weight: torch.float16
+ - model.layers.39.post_attention_layernorm.weight: torch.float16
+ - model.layers.40.self_attn.q_proj.weight: torch.float16
+ - model.layers.40.self_attn.k_proj.weight: torch.float16
+ - model.layers.40.self_attn.v_proj.weight: torch.float16
+ - model.layers.40.self_attn.o_proj.weight: torch.float16
+ - model.layers.40.mlp.gate_proj.weight: torch.float16
+ - model.layers.40.mlp.up_proj.weight: torch.float16
+ - model.layers.40.mlp.down_proj.weight: torch.float16
+ - model.layers.40.input_layernorm.weight: torch.float16
+ - model.layers.40.post_attention_layernorm.weight: torch.float16
+ - model.layers.41.self_attn.q_proj.weight: torch.float16
+ - model.layers.41.self_attn.k_proj.weight: torch.float16
+ - model.layers.41.self_attn.v_proj.weight: torch.float16
+ - model.layers.41.self_attn.o_proj.weight: torch.float16
+ - model.layers.41.mlp.gate_proj.weight: torch.float16
+ - model.layers.41.mlp.up_proj.weight: torch.float16
+ - model.layers.41.mlp.down_proj.weight: torch.float16
+ - model.layers.41.input_layernorm.weight: torch.float16
+ - model.layers.41.post_attention_layernorm.weight: torch.float16
+ - model.layers.42.self_attn.q_proj.weight: torch.float16
+ - model.layers.42.self_attn.k_proj.weight: torch.float16
+ - model.layers.42.self_attn.v_proj.weight: torch.float16
+ - model.layers.42.self_attn.o_proj.weight: torch.float16
+ - model.layers.42.mlp.gate_proj.weight: torch.float16
+ - model.layers.42.mlp.up_proj.weight: torch.float16
+ - model.layers.42.mlp.down_proj.weight: torch.float16
+ - model.layers.42.input_layernorm.weight: torch.float16
+ - model.layers.42.post_attention_layernorm.weight: torch.float16
+ - model.layers.43.self_attn.q_proj.weight: torch.float16
+ - model.layers.43.self_attn.k_proj.weight: torch.float16
+ - model.layers.43.self_attn.v_proj.weight: torch.float16
+ - model.layers.43.self_attn.o_proj.weight: torch.float16
+ - model.layers.43.mlp.gate_proj.weight: torch.float16
+ - model.layers.43.mlp.up_proj.weight: torch.float16
+ - model.layers.43.mlp.down_proj.weight: torch.float16
+ - model.layers.43.input_layernorm.weight: torch.float16
+ - model.layers.43.post_attention_layernorm.weight: torch.float16
+ - model.layers.44.self_attn.q_proj.weight: torch.float16
+ - model.layers.44.self_attn.k_proj.weight: torch.float16
+ - model.layers.44.self_attn.v_proj.weight: torch.float16
+ - model.layers.44.self_attn.o_proj.weight: torch.float16
+ - model.layers.44.mlp.gate_proj.weight: torch.float16
+ - model.layers.44.mlp.up_proj.weight: torch.float16
+ - model.layers.44.mlp.down_proj.weight: torch.float16
+ - model.layers.44.input_layernorm.weight: torch.float16
+ - model.layers.44.post_attention_layernorm.weight: torch.float16
+ - model.layers.45.self_attn.q_proj.weight: torch.float16
+ - model.layers.45.self_attn.k_proj.weight: torch.float16
+ - model.layers.45.self_attn.v_proj.weight: torch.float16
+ - model.layers.45.self_attn.o_proj.weight: torch.float16
+ - model.layers.45.mlp.gate_proj.weight: torch.float16
+ - model.layers.45.mlp.up_proj.weight: torch.float16
+ - model.layers.45.mlp.down_proj.weight: torch.float16
+ - model.layers.45.input_layernorm.weight: torch.float16
+ - model.layers.45.post_attention_layernorm.weight: torch.float16
+ - model.layers.46.self_attn.q_proj.weight: torch.float16
+ - model.layers.46.self_attn.k_proj.weight: torch.float16
+ - model.layers.46.self_attn.v_proj.weight: torch.float16
+ - model.layers.46.self_attn.o_proj.weight: torch.float16
+ - model.layers.46.mlp.gate_proj.weight: torch.float16
+ - model.layers.46.mlp.up_proj.weight: torch.float16
+ - model.layers.46.mlp.down_proj.weight: torch.float16
+ - model.layers.46.input_layernorm.weight: torch.float16
+ - model.layers.46.post_attention_layernorm.weight: torch.float16
+ - model.layers.47.self_attn.q_proj.weight: torch.float16
+ - model.layers.47.self_attn.k_proj.weight: torch.float16
+ - model.layers.47.self_attn.v_proj.weight: torch.float16
+ - model.layers.47.self_attn.o_proj.weight: torch.float16
+ - model.layers.47.mlp.gate_proj.weight: torch.float16
+ - model.layers.47.mlp.up_proj.weight: torch.float16
+ - model.layers.47.mlp.down_proj.weight: torch.float16
+ - model.layers.47.input_layernorm.weight: torch.float16
+ - model.layers.47.post_attention_layernorm.weight: torch.float16
+ - model.layers.48.self_attn.q_proj.weight: torch.float16
+ - model.layers.48.self_attn.k_proj.weight: torch.float16
+ - model.layers.48.self_attn.v_proj.weight: torch.float16
+ - model.layers.48.self_attn.o_proj.weight: torch.float16
+ - model.layers.48.mlp.gate_proj.weight: torch.float16
+ - model.layers.48.mlp.up_proj.weight: torch.float16
+ - model.layers.48.mlp.down_proj.weight: torch.float16
+ - model.layers.48.input_layernorm.weight: torch.float16
+ - model.layers.48.post_attention_layernorm.weight: torch.float16
+ - model.layers.49.self_attn.q_proj.weight: torch.float16
+ - model.layers.49.self_attn.k_proj.weight: torch.float16
+ - model.layers.49.self_attn.v_proj.weight: torch.float16
+ - model.layers.49.self_attn.o_proj.weight: torch.float16
+ - model.layers.49.mlp.gate_proj.weight: torch.float16
+ - model.layers.49.mlp.up_proj.weight: torch.float16
+ - model.layers.49.mlp.down_proj.weight: torch.float16
+ - model.layers.49.input_layernorm.weight: torch.float16
+ - model.layers.49.post_attention_layernorm.weight: torch.float16
+ - model.layers.50.self_attn.q_proj.weight: torch.float16
+ - model.layers.50.self_attn.k_proj.weight: torch.float16
+ - model.layers.50.self_attn.v_proj.weight: torch.float16
+ - model.layers.50.self_attn.o_proj.weight: torch.float16
+ - model.layers.50.mlp.gate_proj.weight: torch.float16
+ - model.layers.50.mlp.up_proj.weight: torch.float16
+ - model.layers.50.mlp.down_proj.weight: torch.float16
+ - model.layers.50.input_layernorm.weight: torch.float16
+ - model.layers.50.post_attention_layernorm.weight: torch.float16
+ - model.layers.51.self_attn.q_proj.weight: torch.float16
+ - model.layers.51.self_attn.k_proj.weight: torch.float16
+ - model.layers.51.self_attn.v_proj.weight: torch.float16
+ - model.layers.51.self_attn.o_proj.weight: torch.float16
+ - model.layers.51.mlp.gate_proj.weight: torch.float16
+ - model.layers.51.mlp.up_proj.weight: torch.float16
+ - model.layers.51.mlp.down_proj.weight: torch.float16
+ - model.layers.51.input_layernorm.weight: torch.float16
+ - model.layers.51.post_attention_layernorm.weight: torch.float16
+ - model.layers.52.self_attn.q_proj.weight: torch.float16
+ - model.layers.52.self_attn.k_proj.weight: torch.float16
+ - model.layers.52.self_attn.v_proj.weight: torch.float16
+ - model.layers.52.self_attn.o_proj.weight: torch.float16
+ - model.layers.52.mlp.gate_proj.weight: torch.float16
+ - model.layers.52.mlp.up_proj.weight: torch.float16
+ - model.layers.52.mlp.down_proj.weight: torch.float16
+ - model.layers.52.input_layernorm.weight: torch.float16
+ - model.layers.52.post_attention_layernorm.weight: torch.float16
+ - model.layers.53.self_attn.q_proj.weight: torch.float16
+ - model.layers.53.self_attn.k_proj.weight: torch.float16
+ - model.layers.53.self_attn.v_proj.weight: torch.float16
+ - model.layers.53.self_attn.o_proj.weight: torch.float16
+ - model.layers.53.mlp.gate_proj.weight: torch.float16
+ - model.layers.53.mlp.up_proj.weight: torch.float16
+ - model.layers.53.mlp.down_proj.weight: torch.float16
+ - model.layers.53.input_layernorm.weight: torch.float16
+ - model.layers.53.post_attention_layernorm.weight: torch.float16
+ - model.layers.54.self_attn.q_proj.weight: torch.float16
+ - model.layers.54.self_attn.k_proj.weight: torch.float16
+ - model.layers.54.self_attn.v_proj.weight: torch.float16
+ - model.layers.54.self_attn.o_proj.weight: torch.float16
+ - model.layers.54.mlp.gate_proj.weight: torch.float16
+ - model.layers.54.mlp.up_proj.weight: torch.float16
+ - model.layers.54.mlp.down_proj.weight: torch.float16
+ - model.layers.54.input_layernorm.weight: torch.float16
+ - model.layers.54.post_attention_layernorm.weight: torch.float16
+ - model.layers.55.self_attn.q_proj.weight: torch.float16
+ - model.layers.55.self_attn.k_proj.weight: torch.float16
+ - model.layers.55.self_attn.v_proj.weight: torch.float16
+ - model.layers.55.self_attn.o_proj.weight: torch.float16
+ - model.layers.55.mlp.gate_proj.weight: torch.float16
+ - model.layers.55.mlp.up_proj.weight: torch.float16
+ - model.layers.55.mlp.down_proj.weight: torch.float16
+ - model.layers.55.input_layernorm.weight: torch.float16
+ - model.layers.55.post_attention_layernorm.weight: torch.float16
+ - model.layers.56.self_attn.q_proj.weight: torch.float16
+ - model.layers.56.self_attn.k_proj.weight: torch.float16
+ - model.layers.56.self_attn.v_proj.weight: torch.float16
+ - model.layers.56.self_attn.o_proj.weight: torch.float16
+ - model.layers.56.mlp.gate_proj.weight: torch.float16
+ - model.layers.56.mlp.up_proj.weight: torch.float16
+ - model.layers.56.mlp.down_proj.weight: torch.float16
+ - model.layers.56.input_layernorm.weight: torch.float16
+ - model.layers.56.post_attention_layernorm.weight: torch.float16
+ - model.layers.57.self_attn.q_proj.weight: torch.float16
+ - model.layers.57.self_attn.k_proj.weight: torch.float16
+ - model.layers.57.self_attn.v_proj.weight: torch.float16
+ - model.layers.57.self_attn.o_proj.weight: torch.float16
+ - model.layers.57.mlp.gate_proj.weight: torch.float16
+ - model.layers.57.mlp.up_proj.weight: torch.float16
+ - model.layers.57.mlp.down_proj.weight: torch.float16
+ - model.layers.57.input_layernorm.weight: torch.float16
+ - model.layers.57.post_attention_layernorm.weight: torch.float16
+ - model.layers.58.self_attn.q_proj.weight: torch.float16
+ - model.layers.58.self_attn.k_proj.weight: torch.float16
+ - model.layers.58.self_attn.v_proj.weight: torch.float16
+ - model.layers.58.self_attn.o_proj.weight: torch.float16
+ - model.layers.58.mlp.gate_proj.weight: torch.float16
+ - model.layers.58.mlp.up_proj.weight: torch.float16
+ - model.layers.58.mlp.down_proj.weight: torch.float16
+ - model.layers.58.input_layernorm.weight: torch.float16
+ - model.layers.58.post_attention_layernorm.weight: torch.float16
+ - model.layers.59.self_attn.q_proj.weight: torch.float16
+ - model.layers.59.self_attn.k_proj.weight: torch.float16
+ - model.layers.59.self_attn.v_proj.weight: torch.float16
+ - model.layers.59.self_attn.o_proj.weight: torch.float16
+ - model.layers.59.mlp.gate_proj.weight: torch.float16
+ - model.layers.59.mlp.up_proj.weight: torch.float16
+ - model.layers.59.mlp.down_proj.weight: torch.float16
+ - model.layers.59.input_layernorm.weight: torch.float16
+ - model.layers.59.post_attention_layernorm.weight: torch.float16
+ - model.layers.60.self_attn.q_proj.weight: torch.float16
+ - model.layers.60.self_attn.k_proj.weight: torch.float16
+ - model.layers.60.self_attn.v_proj.weight: torch.float16
+ - model.layers.60.self_attn.o_proj.weight: torch.float16
+ - model.layers.60.mlp.gate_proj.weight: torch.float16
+ - model.layers.60.mlp.up_proj.weight: torch.float16
+ - model.layers.60.mlp.down_proj.weight: torch.float16
+ - model.layers.60.input_layernorm.weight: torch.float16
+ - model.layers.60.post_attention_layernorm.weight: torch.float16
+ - model.layers.61.self_attn.q_proj.weight: torch.float16
+ - model.layers.61.self_attn.k_proj.weight: torch.float16
+ - model.layers.61.self_attn.v_proj.weight: torch.float16
+ - model.layers.61.self_attn.o_proj.weight: torch.float16
+ - model.layers.61.mlp.gate_proj.weight: torch.float16
+ - model.layers.61.mlp.up_proj.weight: torch.float16
+ - model.layers.61.mlp.down_proj.weight: torch.float16
+ - model.layers.61.input_layernorm.weight: torch.float16
+ - model.layers.61.post_attention_layernorm.weight: torch.float16
+ - model.layers.62.self_attn.q_proj.weight: torch.float16
+ - model.layers.62.self_attn.k_proj.weight: torch.float16
+ - model.layers.62.self_attn.v_proj.weight: torch.float16
+ - model.layers.62.self_attn.o_proj.weight: torch.float16
+ - model.layers.62.mlp.gate_proj.weight: torch.float16
+ - model.layers.62.mlp.up_proj.weight: torch.float16
+ - model.layers.62.mlp.down_proj.weight: torch.float16
+ - model.layers.62.input_layernorm.weight: torch.float16
+ - model.layers.62.post_attention_layernorm.weight: torch.float16
+ - model.layers.63.self_attn.q_proj.weight: torch.float16
+ - model.layers.63.self_attn.k_proj.weight: torch.float16
+ - model.layers.63.self_attn.v_proj.weight: torch.float16
+ - model.layers.63.self_attn.o_proj.weight: torch.float16
+ - model.layers.63.mlp.gate_proj.weight: torch.float16
+ - model.layers.63.mlp.up_proj.weight: torch.float16
+ - model.layers.63.mlp.down_proj.weight: torch.float16
+ - model.layers.63.input_layernorm.weight: torch.float16
+ - model.layers.63.post_attention_layernorm.weight: torch.float16
+ - model.norm.weight: torch.float16
+ - lm_head.weight: torch.float16
+
+{
+  "results": {
+    "kobest_hellaswag": {
+      "acc": 0.548,
+      "acc_stderr": 0.02227969410784354,
+      "acc_norm": 0.59,
+      "acc_norm_stderr": 0.02201748257812769,
+      "macro_f1": 0.5456290493022256,
+      "macro_f1_stderr": 0.02231459150153798
+    }
+  },
+  "versions": {
+    "kobest_hellaswag": 0
+  },
+  "config": {
+    "model": "hf-causal-experimental",
+    "model_args": "pretrained=x2bee/POLAR-14B-v0.2,use_accelerate=true,trust_remote_code=true",
+    "num_fewshot": 0,
+    "batch_size": "8",
+    "device": null,
+    "no_cache": true,
+    "limit": null,
+    "bootstrap_iters": 100000,
+    "description_dict": {},
+    "quantization_module": null,
+    "bit_width": null
+  }
+}
+hf-causal-experimental (pretrained=x2bee/POLAR-14B-v0.2,use_accelerate=true,trust_remote_code=true), limit: None, provide_description: False, num_fewshot: 0, batch_size: 8
+|      Task      |Version| Metric |Value |   |Stderr|
+|----------------|------:|--------|-----:|---|-----:|
+|kobest_hellaswag|      0|acc     |0.5480|±  |0.0223|
+|                |       |acc_norm|0.5900|±  |0.0220|
+|                |       |macro_f1|0.5456|±  |0.0223|

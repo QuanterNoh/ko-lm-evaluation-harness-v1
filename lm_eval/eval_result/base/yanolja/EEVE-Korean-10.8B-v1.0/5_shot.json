@@ -1,0 +1,102 @@
+{
+  "results": {
+    "klue_nli": {
+      "acc": 0.487,
+      "acc_stderr": 0.00912714458393656
+    },
+    "klue_sts": {
+      "acc": 0.4393063583815029,
+      "acc_stderr": 0.021806284820172155,
+      "f1": 0.013559322033898305,
+      "f1_stderr": 0.00944859600487183
+    },
+    "klue_ynat": {
+      "acc": 0.6372021521906226,
+      "acc_stderr": 0.005038568242633568,
+      "macro_f1": 0.6177779330062315,
+      "macro_f1_stderr": 0.005864341382904581
+    },
+    "kobest_boolq": {
+      "acc": 0.9230769230769231,
+      "acc_stderr": 0.0071140749309977986,
+      "macro_f1": 0.9230769230769231,
+      "macro_f1_stderr": 0.007123649166918213
+    },
+    "kobest_copa": {
+      "acc": 0.829,
+      "acc_stderr": 0.011912216456264599,
+      "macro_f1": 0.8287395127989672,
+      "macro_f1_stderr": 0.01196959316624097
+    },
+    "kobest_hellaswag": {
+      "acc": 0.512,
+      "acc_stderr": 0.022376626797927058,
+      "acc_norm": 0.552,
+      "acc_norm_stderr": 0.022261697292270084,
+      "macro_f1": 0.5086815219159566,
+      "macro_f1_stderr": 0.0224045395371692
+    },
+    "kobest_sentineg": {
+      "acc": 0.9748110831234257,
+      "acc_stderr": 0.007874398380604263,
+      "macro_f1": 0.9748070870139101,
+      "macro_f1_stderr": 0.007877571733920351
+    },
+    "kohatespeech": {
+      "acc": 0.3885350318471338,
+      "acc_stderr": 0.02248288052618342,
+      "macro_f1": 0.3403869044321648,
+      "macro_f1_stderr": 0.02000534252574566
+    },
+    "kohatespeech_apeach": {
+      "acc": 0.7503978779840849,
+      "acc_stderr": 0.007049476490144878,
+      "macro_f1": 0.7456138709160897,
+      "macro_f1_stderr": 0.007164496895735521
+    },
+    "kohatespeech_gen_bias": {
+      "acc": 0.8386411889596603,
+      "acc_stderr": 0.016968189583590025,
+      "macro_f1": 0.5509333600963469,
+      "macro_f1_stderr": 0.029305212250409055
+    },
+    "korunsmile": {
+      "f1": 0.34000249549692657,
+      "f1_stderr": 0.007698562394468176
+    },
+    "nsmc": {
+      "acc": 0.88574,
+      "acc_stderr": 0.001422720468212436
+    },
+    "pawsx_ko": {
+      "acc": 0.556,
+      "acc_stderr": 0.011112774040420183
+    }
+  },
+  "versions": {
+    "klue_nli": 0,
+    "klue_sts": 0,
+    "klue_ynat": 0,
+    "kobest_boolq": 0,
+    "kobest_copa": 0,
+    "kobest_hellaswag": 0,
+    "kobest_sentineg": 0,
+    "kohatespeech": 0,
+    "kohatespeech_apeach": 0,
+    "kohatespeech_gen_bias": 0,
+    "korunsmile": 0,
+    "nsmc": 0,
+    "pawsx_ko": 0
+  },
+  "config": {
+    "model": "hf-causal-experimental",
+    "model_args": "pretrained=yanolja/EEVE-Korean-10.8B-v1.0,use_accelerate=true,trust_remote_code=true",
+    "num_fewshot": 5,
+    "batch_size": "4",
+    "device": null,
+    "no_cache": true,
+    "limit": null,
+    "bootstrap_iters": 100000,
+    "description_dict": {}
+  }
+}

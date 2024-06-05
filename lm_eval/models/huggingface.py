@@ -6,7 +6,7 @@ import peft
 from typing import List, Mapping, NewType, Optional, Tuple, Union
 from tqdm import tqdm
 
-from transformers import BatchEncoding
+from transformers import BatchEncoding, BitsAndBytesConfig, QuantoConfig, AutoModelForCausalLM, AutoTokenizer
 from accelerate import find_executable_batch_size
 
 from lm_eval import utils
@@ -23,7 +23,7 @@ def _get_accelerate_args(
     max_cpu_memory: Optional[Union[int, str]] = None,
     offload_folder: Optional[str] = "./offload",
 ) -> dict:
-    """Returns the kwargs needed to apply `accelerate` in `AutoModel.from_pretrained`."""
+    """`AutoModel.from_pretrained`에서 `accelerate`를 적용하는 데 필요한 kwargs를 반환합니다."""
     max_memory = {}
     if max_memory_per_gpu is not None:
         max_memory_per_gpu_map = {
@@ -45,7 +45,7 @@ def _get_accelerate_args(
 def _get_dtype(
     dtype: Union[str, torch.dtype], config: Optional[transformers.AutoConfig] = None
 ) -> torch.dtype:
-    """Converts `dtype` from `str` to torch.dtype when possible."""
+    """가능한 경우 `dtype`를 `str`에서 torch.dtype로 변환합니다."""
     if dtype is None and config is not None:
         _torch_dtype = config.torch_dtype
     elif isinstance(dtype, str) and dtype != "auto":
@@ -62,8 +62,8 @@ class HuggingFaceAutoLM(BaseLM):
     AUTO_MODEL_CLASS: transformers.AutoModel = None
     AUTO_PEFT_CLASS: peft.PeftModel = None
 
-    # Default max sequence length setting for when no `max_length` is provided
-    # or no max length config setting is found in the model or tokenizer.
+    # `max_length`가 제공되지 않거나 
+    # 모델 또는 토크나이저에서 최대 길이 설정을 찾을 수 없는 경우의 기본 최대 시퀀스 길이 설정.
     _DEFAULT_MAX_LENGTH: int = 2048
 
     def __init__(
@@ -86,59 +86,58 @@ class HuggingFaceAutoLM(BaseLM):
         peft: str = None,
         load_in_8bit: Optional[bool] = False,
         trust_remote_code: Optional[bool] = False,
+        quantization_module: Optional[str] = None,  # 양자화 모듈 추가
+        bit_width: Optional[str] = None,  # 양자화 비트 추가
     ):
-        """Initializes a HuggingFace `AutoModel` and `AutoTokenizer` for evaluation.
+        """평가를 위해 HuggingFace `AutoModel`과 `AutoTokenizer`를 초기화합니다.
         Args:
             pretrained (str):
-                The HuggingFace Hub model ID name or the path to a pre-trained
-                model to load. This is effectively the `pretrained_model_name_or_path`
-                argument of `from_pretrained` in the HuggingFace `transformers` API.
+                로드할 사전 학습된 모델의 HuggingFace Hub 모델 ID 이름 또는 경로.
+                이는 HuggingFace `transformers` API의 `from_pretrained`의 
+                `pretrained_model_name_or_path` 인수에 해당합니다.
             add_special_tokens (bool, optional, defaults to True):
-                Whether to add special tokens to the input sequences. If `None`, the
-                default value will be set to `True` for seq2seq models (e.g. T5) and
-                `False` for causal models.
-                WARNING: Evaluating causal models with `add_special_tokens=True` is
-                currently __not__ supported.
-            > Large model loading `accelerate` arguments
+                입력 시퀀스에 특수 토큰을 추가할지 여부를 결정합니다. `None`인 경우,
+                기본값은 seq2seq 모델(T5 등)에 대해 `True`로 설정되고,
+                인과 모델에 대해서는 `False`로 설정됩니다.
+                경고: 현재 `add_special_tokens=True` 옵션을 사용하여 인과 모델을
+                평가하는 것은 지원되지 않습니다.
+            > 대형 모델 로드를 위한 `accelerate` 인수
             use_accelerate (bool, optional, defaults to False):
-                If True, uses the `accelerate` library to load a large model across
-                multiple devices.
+                `accelerate` 라이브러리를 사용하여 대형 모델을 여러 장치에 걸쳐 로드할지 여부를 
+                결정합니다.
             device_map_option (str, optional, defaults to "auto"):
-                The device map option to use when loading the model with
-                `accelerate`.
-                Options:
+                `accelerate`로 모델을 로드할 때 사용할 디바이스 맵 옵션.
+                옵션:
                     "auto", "balanced", "balanced_low_0", "sequential"
-                See the `accelerate` docs for more details on these options:
+                이러한 옵션에 대한 자세한 내용은 `accelerate` 문서를 참조하십시오:
                 https://huggingface.co/docs/transformers/main/en/main_classes/model#transformers.PreTrainedModel.from_pretrained.device_map
             max_memory_per_gpu (Union[int, str], optional, defaults to None):
-                The maximum memory available for each GPU in bytes as `int` or in
-                the format f"{significand}{unit_symbol}" where {unit_symbol} is
-                any of ["GB", "MB", "GIB", "MIB"]. Refer to the `max_memory` arg in
-                the "Parameters for big model inference" section of the following
-                docs:
+                각 GPU에 사용할 수 있는 최대 메모리를 바이트 단위의 `int`로 지정하거나
+                f"{significand}{unit_symbol}" 형식으로 지정합니다. 여기서 {unit_symbol}은 
+                ["GB", "MB", "GIB", "MIB"] 중 하나입니다. 다음 문서의 "Parameters for big model inference" 
+                섹션에서 `max_memory` 인수를 참조하십시오:
                 https://huggingface.co/docs/transformers/main/en/main_classes/model#transformers.PreTrainedModel.from_pretrained.max_memory
             max_cpu_memory (Union[int, str], optional, defaults to None):
-                The maximum available CPU RAM in bytes as `int` or in the format
-                f"{significand}{unit_symbol}" where {unit_symbol} is any of
-                ["GB", "MB", "GIB", "MIB"]. Refer to the `max_memory` arg in the
-                "Parameters for big model inference" section of the following docs:
+                바이트 단위의 `int`로 지정된 최대 사용 가능 CPU RAM 또는 f"{significand}{unit_symbol}" 
+                형식으로 지정합니다. 여기서 {unit_symbol}은 ["GB", "MB", "GIB", "MIB"] 중 하나입니다. 
+                다음 문서의 "Parameters for big model inference" 섹션에서 `max_memory` 인수를 
+                참조하십시오:
                 https://huggingface.co/docs/transformers/main/en/main_classes/model#transformers.PreTrainedModel.from_pretrained.max_memory
             offload_folder (str, optional, defaults to "./offload"):
-                The folder to offload weights into if `device_map` contains any
-                "disk" value.
-            dtype (Union[str, torch.dtype], optional, defaults to None):):
-                Converts the model weights to `dtype`, if specified. Strings get
-                converted to `torch.dtype` objects (e.g. `float16` -> `torch.float16`).
-                Use `dtype="auto"` to derive the type from the model’s weights.
+                `device_map`에 "disk" 값이 포함된 경우 가중치를 오프로드할 폴더입니다.
+            dtype (Union[str, torch.dtype], optional, defaults to None):
+                지정된 경우 모델 가중치를 `dtype`으로 변환합니다. 문자열은 `torch.dtype` 객체로 
+                변환됩니다 (예: `float16` -> `torch.float16`). `dtype="auto"`를 사용하여 모델의 
+                가중치에서 타입을 유도할 수 있습니다.
             peft (str, optional, defaults to None):
-                Path of the adapter weights to load from Huggingface. This will usually
-                include a directory that includes the files `adapter_config.json` and
-                `adapter_model.bin`. Compatible with [PEFT](https://github.com/huggingface/peft)
+                Huggingface에서 로드할 어댑터 가중치의 경로. 일반적으로 
+                `adapter_config.json` 및 `adapter_model.bin` 파일을 포함하는 디렉터리가 
+                여기에 포함됩니다. [PEFT](https://github.com/huggingface/peft)와 호환됩니다.
             load_in_8bit (bool, optional, defaults to False):
-                If True, will convert the loaded model into mixed-8bit quantized model. See:
+                True로 설정하면 로드된 모델을 혼합 8비트 양자화된 모델로 변환합니다. 다음을 참조하십시오:
                 https://huggingface.co/docs/transformers/main/en/main_classes/model#transformers.PreTrainedModel.from_pretrained.load_in_8bit
             trust_remote_code (bool, optional, defaults to False):
-                If True, will trust the remote code when loading the model.
+                True로 설정하면 모델을 로드할 때 원격 코드를 신뢰합니다.
         """
         super().__init__()
 
@@ -149,16 +148,15 @@ class HuggingFaceAutoLM(BaseLM):
             add_special_tokens is not None
             and self.AUTO_MODEL_CLASS is transformers.AutoModelForCausalLM
         ):
-            # TODO: Support evaluating causal models with special tokens. Currently,
-            # this is not possible because the `_loglikelihood_tokens()` method for
-            # causal LMs makes a no-special-tokens assumption given that contexts
-            # and labels/continuations are tokenized separately without special
-            # tokens, concatenated, and then processed as inputs.
+            # TODO: 특수 토큰을 사용하여 인과 모델을 평가하는 것을 지원합니다. 현재,
+            # 이 작업은 인과 언어 모델(causal LMs)을 위한 `_loglikelihood_tokens()` 메서드가
+            # 문맥과 레이블/연속성을 별도로 토큰화하고 특수 토큰 없이
+            # 연결한 후 입력으로 처리하는 가정으로 인해 불가능합니다.
             assert (
                 not add_special_tokens
-            ), "Evaluating causal models with `add_special_tokens=True` is currently not supported."
+            ), "현재 `add_special_tokens=True` 옵션을 사용하여 causal models을 평가하는 것은 지원되지 않습니다."
 
-        # setup for automatic batch size detection
+        # 자동 배치 크기 감지를 설정합니다
         if batch_size == "auto":
             self._batch_size = batch_size
         else:
@@ -181,6 +179,11 @@ class HuggingFaceAutoLM(BaseLM):
         )
         self.tokenizer.model_max_length = self.max_length
 
+        if quantization_module and bit_width:
+            self.quantization_config = self._get_quantization_config(quantization_module, bit_width)  # 양자화 설정 생성
+        else:
+            self.quantization_config = None
+
         model_kwargs = {}
         if use_accelerate:
             model_kwargs = _get_accelerate_args(
@@ -189,16 +192,21 @@ class HuggingFaceAutoLM(BaseLM):
                 max_cpu_memory,
                 offload_folder,
             )
+
         model_kwargs["load_in_8bit"] = load_in_8bit
+
+        # 모델 로드
         self.model = self._create_auto_model(
             pretrained=pretrained,
             trust_remote_code=trust_remote_code,
             revision=revision,
             subfolder=subfolder,
             torch_dtype=_get_dtype(dtype, self._config),
+            quantization_config=self.quantization_config,  # 양자화 설정 전달
             **model_kwargs,
         )
-        # note: peft_path can be different than pretrained model path
+
+        # 참고: peft_path는 사전 훈련된 모델 경로와 다를 수 있습니다
         if peft is not None:
             self.model = self._create_auto_model_peft(
                 model=self.model,
@@ -213,12 +221,34 @@ class HuggingFaceAutoLM(BaseLM):
 
         self._device = device
         if use_accelerate and "lm_head" in self.model.hf_device_map:
-            # `accelerate` can place `lm_head` weights on a different device than
-            # the user specified one so we force `self._device` to be the same as
-            # `lm_head`'s.
+            # `accelerate`는 `lm_head` 가중치를 사용자가 지정한 장치와 다른 장치에 배치할 수 있으므로 `lm_head`의 장치와 동일하게 `self._device`를 강제 설정
             self._device = self.model.hf_device_map["lm_head"]
         if not use_accelerate:
             self.model.to(self._device)
+
+    # 양자화 설정 생성
+    def _get_quantization_config(self, quantization_module, bit_width):
+        if quantization_module == "bnb" and bit_width: # BitAndBytes
+            from transformers import BitsAndBytesConfig
+            if bit_width == "int8":
+                return BitsAndBytesConfig(
+                    load_in_8bit=True,
+                    llm_int8_threshold=6.0,
+                    llm_int8_has_fp16_weight=False,
+                    llm_int8_enable_fp32_cpu_offload=False
+                )
+            elif bit_width == "int4":
+                return BitsAndBytesConfig(
+                    load_in_4bit=True,
+                    bnb_4bit_use_double_quant=True,
+                    bnb_4bit_quant_type="nf4",
+                    # bnb_4bit_quant_type="fp4",
+                    bnb_4bit_compute_dtype=torch.float16
+                )
+            else:
+                raise ValueError(f"Invalid bit width '{bit_width}' for BitAndBytes quantization module.")
+        else:
+            raise ValueError(f"Invalid quantization module '{quantization_module}'.")
 
     def _create_auto_model(
         self,
@@ -232,8 +262,9 @@ class HuggingFaceAutoLM(BaseLM):
         load_in_8bit: Optional[bool] = False,
         trust_remote_code: Optional[bool] = False,
         torch_dtype: Optional[Union[str, torch.dtype]] = None,
+        quantization_config: Optional[dict] = None,  # 양자화 설정 추가
     ) -> transformers.AutoModel:
-        """Returns a pre-trained pytorch model from a pre-trained model configuration."""
+        """사전 학습된 모델 구성에서 사전 학습된 pytorch 모델을 반환합니다."""
         model = self.AUTO_MODEL_CLASS.from_pretrained(
             pretrained,
             revision=revision + ("/" + subfolder if subfolder is not None else ""),
@@ -243,6 +274,9 @@ class HuggingFaceAutoLM(BaseLM):
             load_in_8bit=load_in_8bit,
             trust_remote_code=trust_remote_code,
             torch_dtype=torch_dtype,
+            quantization_config=quantization_config,  # 양자화 설정 적용
+            # force_download=force_download,  # 강제 다운로드 옵션
+            # cache_dir=cache_dir  # 캐시 비활성화
         )
         return model
 
@@ -281,7 +315,7 @@ class HuggingFaceAutoLM(BaseLM):
         subfolder: str,
         tokenizer: Optional[str] = None,
     ) -> transformers.PreTrainedTokenizer:
-        """Returns a pre-trained tokenizer from a pre-trained tokenizer configuration."""
+        """사전 학습된 토크나이저 구성을 기반으로 사전 학습된 토크나이저를 반환합니다."""
         tokenizer = self.AUTO_TOKENIZER_CLASS.from_pretrained(
             pretrained if tokenizer is None else tokenizer,
             revision=revision + ("/" + subfolder if subfolder is not None else ""),
@@ -292,10 +326,10 @@ class HuggingFaceAutoLM(BaseLM):
 
     @property
     def add_special_tokens(self) -> bool:
-        """Whether to include special tokens in encoded text. This should be
-        determined by whether or not the model was trained with special tokens.
-        TODO: Remove these conditionals once HuggingFace supports a way to
-        check whether or not an arbitrary model was trained with special tokens.
+        """인코딩된 텍스트에 특수 토큰을 포함할지 여부를 결정합니다. 
+        이는 모델이 특수 토큰으로 학습되었는지 여부에 따라 결정되어야 합니다.
+        TODO: HuggingFace가 임의의 모델이 특수 토큰으로 학습되었는지 확인하는 방법을 지원하면 
+        이 조건문을 제거하십시오.
         """
         if self._add_special_tokens is not None:
             return self._add_special_tokens
@@ -324,14 +358,13 @@ class HuggingFaceAutoLM(BaseLM):
 
     @property
     def max_length(self) -> int:
-        """Return the maximum sequence length of the model.
-        NOTE: Different model configurations have different max sequence length
-        attribute names.
+        """모델의 최대 시퀀스 길이를 반환합니다.
+        참고: 다양한 모델 구성은 서로 다른 최대 시퀀스 길이 속성 이름을 가집니다.
             - n_positions: (CTRLConfig)
             - max_position_embeddings: (BartConfig, RoFormerConfig)
             - n_ctx: (GPT2Config)
-        NOTE: For relative position encoded models you should specify the max
-        sequence length of the model in the constructor via `max_length`.
+        참고: 상대 위치 인코딩된 모델의 경우 생성자에서 `max_length`를 통해 
+        모델의 최대 시퀀스 길이를 지정해야 합니다.
         """
         if self._max_length is not None:
             return self._max_length

@@ -1,0 +1,104 @@
+{
+  "results": {
+    "klue_nli": {
+      "acc": 0.6806666666666666,
+      "acc_stderr": 0.00851336269049741
+    },
+    "klue_sts": {
+      "acc": 0.2909441233140655,
+      "acc_stderr": 0.01995630557219637,
+      "f1": 0.12380952380952381,
+      "f1_stderr": 0.022009064050482516
+    },
+    "klue_ynat": {
+      "acc": 0.749423520368947,
+      "acc_stderr": 0.004541193298993439,
+      "macro_f1": 0.7291503895223953,
+      "macro_f1_stderr": 0.005285478309303674
+    },
+    "kobest_boolq": {
+      "acc": 0.8454415954415955,
+      "acc_stderr": 0.009650710392265612,
+      "macro_f1": 0.8423375613936401,
+      "macro_f1_stderr": 0.009832157944289682
+    },
+    "kobest_copa": {
+      "acc": 0.873,
+      "acc_stderr": 0.010534798620855785,
+      "macro_f1": 0.8728065387454318,
+      "macro_f1_stderr": 0.010550532335805267
+    },
+    "kobest_hellaswag": {
+      "acc": 0.534,
+      "acc_stderr": 0.022331264423258324,
+      "acc_norm": 0.59,
+      "acc_norm_stderr": 0.02201748257812769,
+      "macro_f1": 0.5330060816896418,
+      "macro_f1_stderr": 0.022344768916958663
+    },
+    "kobest_sentineg": {
+      "acc": 0.8085642317380353,
+      "acc_stderr": 0.019770662052897667,
+      "macro_f1": 0.8026012770857323,
+      "macro_f1_stderr": 0.020308039393603854
+    },
+    "kohatespeech": {
+      "acc": 0.4012738853503185,
+      "acc_stderr": 0.022609222101017644,
+      "macro_f1": 0.39290601431210254,
+      "macro_f1_stderr": 0.022360856570258474
+    },
+    "kohatespeech_apeach": {
+      "acc": 0.7729442970822281,
+      "acc_stderr": 0.006823814888992637,
+      "macro_f1": 0.7643986702270567,
+      "macro_f1_stderr": 0.007017508680136001
+    },
+    "kohatespeech_gen_bias": {
+      "acc": 0.5392781316348195,
+      "acc_stderr": 0.0229920073242521,
+      "macro_f1": 0.47746131075629994,
+      "macro_f1_stderr": 0.02277582084760342
+    },
+    "korunsmile": {
+      "f1": 0.3971641015998702,
+      "f1_stderr": 0.008334710880026658
+    },
+    "nsmc": {
+      "acc": 0.78986,
+      "acc_stderr": 0.0018220016470354894
+    },
+    "pawsx_ko": {
+      "acc": 0.534,
+      "acc_stderr": 0.011157250652426006
+    }
+  },
+  "versions": {
+    "klue_nli": 0,
+    "klue_sts": 0,
+    "klue_ynat": 0,
+    "kobest_boolq": 0,
+    "kobest_copa": 0,
+    "kobest_hellaswag": 0,
+    "kobest_sentineg": 0,
+    "kohatespeech": 0,
+    "kohatespeech_apeach": 0,
+    "kohatespeech_gen_bias": 0,
+    "korunsmile": 0,
+    "nsmc": 0,
+    "pawsx_ko": 0
+  },
+  "config": {
+    "model": "hf-causal-experimental",
+    "model_args": "pretrained=x2bee/POLAR-14B-v0.2,use_accelerate=true,trust_remote_code=true",
+    "num_fewshot": 5,
+    "batch_size": "4",
+    "device": null,
+    "no_cache": true,
+    "limit": null,
+    "bootstrap_iters": 100000,
+    "description_dict": {},
+    "quantization_module": "bnb",
+    "bit_width": "int4"
+  }
+}

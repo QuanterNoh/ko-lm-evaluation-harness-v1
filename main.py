@@ -3,6 +3,7 @@ import json
 import logging
 import fnmatch
 import os
+import torch
 
 from lm_eval import tasks, evaluator
 
@@ -52,7 +53,8 @@ def parse_args():
     parser.add_argument("--check_integrity", action="store_true")
     parser.add_argument("--write_out", action="store_true", default=False)
     parser.add_argument("--output_base_path", type=str, default=None)
-
+    parser.add_argument("--quantization_module", default=None)  # 양자화 모듈 인자 추가
+    parser.add_argument("--bit_width", default=None)  # 양자화 비트수 인자 추가
     return parser.parse_args()
 
 
@@ -91,6 +93,10 @@ def main():
         with open(args.description_dict_path, "r") as f:
             description_dict = json.load(f)
 
+    # 기본값 설정
+    quantization_module = args.quantization_module if args.quantization_module else None
+    bit_width = args.bit_width if args.bit_width else None
+
     results = evaluator.simple_evaluate(
         model=args.model,
         model_args=args.model_args,
@@ -105,6 +111,8 @@ def main():
         check_integrity=args.check_integrity,
         write_out=args.write_out,
         output_base_path=args.output_base_path,
+        quantization_module=quantization_module,  # 양자화 모듈 전달
+        bit_width=bit_width,  # 양자화 비트 전달
     )
 
     dumped = json.dumps(results, indent=2)

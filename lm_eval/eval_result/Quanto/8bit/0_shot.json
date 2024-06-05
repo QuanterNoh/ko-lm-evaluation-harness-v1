@@ -1,0 +1,28 @@
+{
+  "results": {
+    "kobest_hellaswag": {
+      "acc": 0.548,
+      "acc_stderr": 0.02227969410784354,
+      "acc_norm": 0.592,
+      "acc_norm_stderr": 0.022000910893877113,
+      "macro_f1": 0.5458861587544098,
+      "macro_f1_stderr": 0.022339058828766006
+    }
+  },
+  "versions": {
+    "kobest_hellaswag": 0
+  },
+  "config": {
+    "model": "hf-causal-experimental",
+    "model_args": "pretrained=x2bee/POLAR-14B-v0.2,use_accelerate=true,trust_remote_code=true",
+    "num_fewshot": 0,
+    "batch_size": "8",
+    "device": null,
+    "no_cache": true,
+    "limit": null,
+    "bootstrap_iters": 100000,
+    "description_dict": {},
+    "quantization_module": "quanto",
+    "bit_width": "int8"
+  }
+}
