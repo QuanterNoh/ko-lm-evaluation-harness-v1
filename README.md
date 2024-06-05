@@ -1,4 +1,18 @@
-<<<<<<< HEAD
+# Added the ability to set BitAndBytes quantization
+
+BitAndBytes 양자화 설정이 추가되어, 양자화한 모델에 대한 평가 점수 측정 가능
+
+## 사용법
+
+```bash
+# 양자화 모듈과 비트 너비 인자가 설정된 경우
+./run_all.sh <model_name> <cuda_device> <quantization_module> <bit_width>
+# ex) ./run_all.sh x2bee/POLAR-14B-v0.2 '0,1' 'bnb' 'int4'
+
+# 양자화 모듈과 비트 너비 인자가 설정되지 않은 경우(기존과 동일)
+# ex) ./run_all.sh x2bee/POLAR-14B-v0.2 '0,1
+```
+
 # Ko LM Eval Harnesss
 
 한국어 공개 데이터셋으로 평가하는 언어모델 점수!
