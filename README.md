@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Ko LM Eval Harnesss
 
 한국어 공개 데이터셋으로 평가하는 언어모델 점수!
@@ -241,3 +242,6 @@ python main.py \
   url          = {https://doi.org/10.5281/zenodo.5371628}
 }
 ```
+=======
+# ko-lm-evaluation-harness-v1
+>>>>>>> 454720010cf78bba10179d4dbe2bd50fe065c2b1
